@@ -1,0 +1,35 @@
+import { GoogleGenAI, Type } from "@google/genai";
+
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || '' });
+
+export interface ItemSuggestion {
+  description: string;
+  hsn: string;
+}
+
+export async function suggestItemDetails(itemName: string): Promise<ItemSuggestion | null> {
+  try {
+    const response = await ai.models.generateContent({
+      model: "gemini-3-flash-preview",
+      contents: `Suggest a professional product description (max 100 chars) and the most likely 6-digit HSN/SAC code for a product named: "${itemName}".`,
+      config: {
+        responseMimeType: "application/json",
+        responseSchema: {
+          type: Type.OBJECT,
+          properties: {
+            description: { type: Type.STRING },
+            hsn: { type: Type.STRING }
+          },
+          required: ["description", "hsn"]
+        }
+      }
+    });
+
+    const text = response.text;
+    if (!text) return null;
+    return JSON.parse(text);
+  } catch (error) {
+    console.error("Gemini Suggestion Error:", error);
+    return null;
+  }
+}

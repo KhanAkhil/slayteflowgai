@@ -1,0 +1,183 @@
+export type DocType = 'draft' | 'proforma' | 'tax' | 'quotation' | 'credit';
+export type InvoiceStatus = 'draft' | 'pending' | 'paid' | 'overdue' | 'cancelled';
+export type PIStatus = 'draft' | 'sent' | 'accepted' | 'declined';
+export type QuotationStatus = 'draft' | 'sent' | 'accepted' | 'declined' | 'converted';
+export type TaxType = 'gst' | 'igst';
+export type CustomerType = 'B2B' | 'B2C' | 'Government' | 'Individual';
+
+export interface Address {
+  line1: string;
+  line2: string;
+  city: string;
+  state: string;
+  pin: string;
+  country: string;
+}
+
+export interface LineItem {
+  id: string;
+  name: string;
+  desc: string;
+  hsn: string;
+  qty: number;
+  unit: string;
+  rate: number;
+  tax: number;
+  disc: number;
+}
+
+export interface Invoice {
+  id: string;
+  number: string;
+  date: string;
+  dueDate: string;
+  status: InvoiceStatus;
+  docType: DocType;
+  taxType: TaxType;
+  placeOfSupply: string;
+  supplierName: string;
+  supplierGstin: string;
+  supplierAddr: string;
+  supplierPhone: string;
+  supplierEmail: string;
+  customerName: string;
+  customerGstin: string;
+  customerEmail: string;
+  customerPhone: string;
+  billingAddr: Address;
+  shippingAddr: Address;
+  items: LineItem[];
+  subtotal: number;
+  discTotal: number;
+  taxTotal: number;
+  grand: number;
+  notes: string;
+  terms: string;
+  refNumber: string;
+  lrNumber: string;
+  siteName: string;
+  salutation: string;
+  createdAt: string;
+  uid: string;
+}
+
+export interface PILineItem {
+  id: string;
+  name: string;
+  hsn: string;
+  qty: number;
+  unit: string;
+  rate: number;
+}
+
+export interface ProformaInvoice {
+  id: string;
+  number: string;
+  date: string;
+  validUntil: string;
+  status: PIStatus;
+  taxType: TaxType;
+  supplierName: string;
+  supplierGstin: string;
+  supplierAddr: string;
+  supplierPhone: string;
+  supplierEmail: string;
+  customerName: string;
+  customerGstin: string;
+  customerCity: string;
+  siteName: string;
+  salutation: string;
+  items: PILineItem[];
+  subtotal: number;
+  taxTotal: number;
+  grand: number;
+  notes: string;
+  createdAt: string;
+  uid: string;
+}
+
+export interface Customer {
+  id: string;
+  name: string;
+  contact: string;
+  gstin: string;
+  pan: string;
+  email: string;
+  phone: string;
+  phone2: string;
+  website: string;
+  industry: string;
+  type: CustomerType;
+  billingAddr: Address;
+  shippingAddr: Address;
+  creditLimit: number;
+  paymentTerms: string;
+  bankAccount: string;
+  ifsc: string;
+  notes: string;
+  createdAt: string;
+  uid: string;
+}
+
+export interface Item {
+  id: string;
+  name: string;
+  category: string;
+  desc: string;
+  hsn: string;
+  unit: string;
+  rate: number;
+  tax: number;
+  createdAt: string;
+  uid: string;
+}
+
+export interface Quotation {
+  id: string;
+  number: string;
+  date: string;
+  validUntil: string;
+  dueDate?: string; // For PDF compatibility
+  status: QuotationStatus;
+  docType: DocType;
+  taxType: TaxType;
+  placeOfSupply: string;
+  supplierName: string;
+  supplierGstin: string;
+  supplierAddr: string;
+  supplierPhone: string;
+  supplierEmail: string;
+  customerName: string;
+  customerGstin: string;
+  customerEmail: string;
+  customerPhone: string;
+  billingAddr: Address;
+  shippingAddr: Address;
+  items: LineItem[];
+  subtotal: number;
+  discTotal: number;
+  taxTotal: number;
+  grand: number;
+  notes: string;
+  terms: string;
+  refNumber?: string; // For PDF compatibility
+  createdAt: string;
+  uid: string;
+}
+
+export interface Company {
+  name: string;
+  gstin: string;
+  pan: string;
+  email: string;
+  phone: string;
+  website: string;
+  address: string;
+  city: string;
+  state: string;
+  pin: string;
+  prefix: string;
+  taxtype: TaxType;
+  terms: string;
+  uid: string;
+}

@@ -1,0 +1,79 @@
+export const INDIAN_STATES = [
+  "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal", "Andaman and Nicobar Islands", "Chandigarh", "Dadra and Nagar Haveli and Daman and Diu", "Delhi", "Jammu and Kashmir", "Ladakh", "Lakshadweep", "Puducherry"
+];
+
+export const UNITS = [
+  "Nos", "Pcs", "Kg", "Ltr", "Mtr", "Sq.Ft", "Box", "Set", "Hrs", "Days", "Month"
+];
+
+export const TAX_RATES = [0, 5, 12, 18, 28];
+
+export const PAYMENT_TERMS = [
+  "Due on Receipt", "Net 15", "Net 30", "Net 45", "Net 60"
+];
+
+export const COMMON_HSN = [
+  { code: "9973", desc: "Leasing or rental services concerning machinery and equipment" },
+  { code: "9965", desc: "Goods transport services" },
+  { code: "9983", desc: "Other professional, technical and business services" },
+  { code: "9985", desc: "Support services" },
+  { code: "9987", desc: "Maintenance and repair services" },
+  { code: "9996", desc: "Recreational, cultural and sporting services" },
+  { code: "2106", desc: "Food preparations not elsewhere specified" },
+  { code: "0603", desc: "Cut flowers and flower buds of a kind suitable for bouquets" },
+  { code: "440054", desc: "Tent and related equipment" },
+  { code: "9403", desc: "Other furniture and parts thereof" },
+  { code: "8518", desc: "Microphones, loudspeakers, audio-frequency electric amplifiers" },
+  { code: "997321", desc: "Leasing or rental services concerning sound system" },
+];
+
+export const PRESEEDED_ITEMS = [
+  { name: "Sound System", hsn: "997321", unit: "Nos", rate: 4500, tax: 18 },
+  { name: "Handi Craft Deepa", hsn: "9973", unit: "Nos", rate: 650, tax: 18 },
+  { name: "Tables", hsn: "9973", unit: "Nos", rate: 150, tax: 18 },
+  { name: "Armless Chairs", hsn: "9973", unit: "Nos", rate: 20, tax: 18 },
+  { name: "Side Wall", hsn: "440054", unit: "Nos", rate: 250, tax: 18 },
+  { name: "Stage", hsn: "9973", unit: "Sq.Ft", rate: 25, tax: 18 },
+  { name: "Carpet", hsn: "9973", unit: "Sq.Ft", rate: 2.50, tax: 18 },
+  { name: "Snacks", hsn: "2106", unit: "Nos", rate: 50, tax: 18 },
+  { name: "Flower Bokeh", hsn: "0603", unit: "Nos", rate: 300, tax: 18 },
+  { name: "Transportation", hsn: "9965", unit: "Nos", rate: 1000, tax: 18 },
+  { name: "Shamiyana", hsn: "440054", unit: "Sq.Ft", rate: 5, tax: 18 },
+  { name: "Sweet Box", hsn: "2106", unit: "Nos", rate: 10, tax: 18 }
+];
+
+export const PRESEEDED_COMPANY = {
+  name: "AK Events and Tent House",
+  gstin: "29BUUPA1314C1ZY",
+  email: "akevents2026@outlook.com",
+  phone: "7676965155",
+  address: "Shop No 1, Khajisonnenahalli Village, Kannamangala Post, Bidarahalli Hobli, Bangalore 560067",
+  city: "Bangalore",
+  state: "Karnataka",
+  pin: "560067",
+  prefix: "INV",
+  taxtype: "gst" as const,
+  terms: "1. Payment should be made within 15 days.\n2. Goods once sold will not be taken back."
+};
+
+export const PRESEEDED_CUSTOMER = {
+  name: "Godrej Properties Ltd",
+  gstin: "29AAACG3995M1ZX",
+  pan: "AAACG3995M",
+  billingAddr: {
+    line1: "9th Floor, Unit No.4 & 5, Godrej Centre",
+    line2: "Indiranagar",
+    city: "Bangalore Urban",
+    state: "Karnataka",
+    pin: "560038",
+    country: "India"
+  },
+  shippingAddr: {
+    line1: "Godrej Whitefield - Common",
+    line2: "Dommasandra Village, Bidarahalli Hobli",
+    city: "Bangalore",
+    state: "Karnataka",
+    pin: "562125",
+    country: "India"
+  }
+};

@@ -1,0 +1,203 @@
+{
+  "entities": {
+    "Invoice": {
+      "title": "Invoice",
+      "description": "A tax invoice record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "number": { "type": "string" },
+        "date": { "type": "string", "format": "date-time" },
+        "dueDate": { "type": "string", "format": "date-time" },
+        "status": { "type": "string", "enum": ["draft", "pending", "paid", "overdue"] },
+        "docType": { "type": "string", "enum": ["draft", "proforma", "tax"] },
+        "taxType": { "type": "string", "enum": ["gst", "igst"] },
+        "placeOfSupply": { "type": "string" },
+        "supplierName": { "type": "string" },
+        "supplierGstin": { "type": "string" },
+        "supplierAddr": { "type": "string" },
+        "supplierPhone": { "type": "string" },
+        "supplierEmail": { "type": "string" },
+        "customerName": { "type": "string" },
+        "customerGstin": { "type": "string" },
+        "customerEmail": { "type": "string" },
+        "customerPhone": { "type": "string" },
+        "billingAddr": { "type": "object" },
+        "shippingAddr": { "type": "object" },
+        "items": { "type": "array" },
+        "subtotal": { "type": "number" },
+        "discTotal": { "type": "number" },
+        "taxTotal": { "type": "number" },
+        "grand": { "type": "number" },
+        "notes": { "type": "string" },
+        "terms": { "type": "string" },
+        "refNumber": { "type": "string" },
+        "lrNumber": { "type": "string" },
+        "siteName": { "type": "string" },
+        "salutation": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "uid": { "type": "string" }
+      },
+      "required": ["id", "number", "date", "uid"]
+    },
+    "ProformaInvoice": {
+      "title": "Proforma Invoice",
+      "description": "A proforma invoice record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "number": { "type": "string" },
+        "date": { "type": "string", "format": "date-time" },
+        "validUntil": { "type": "string", "format": "date-time" },
+        "status": { "type": "string", "enum": ["draft", "sent", "accepted", "declined"] },
+        "taxType": { "type": "string", "enum": ["gst", "igst"] },
+        "supplierName": { "type": "string" },
+        "supplierGstin": { "type": "string" },
+        "supplierAddr": { "type": "string" },
+        "supplierPhone": { "type": "string" },
+        "supplierEmail": { "type": "string" },
+        "customerName": { "type": "string" },
+        "customerGstin": { "type": "string" },
+        "customerCity": { "type": "string" },
+        "siteName": { "type": "string" },
+        "salutation": { "type": "string" },
+        "items": { "type": "array" },
+        "subtotal": { "type": "number" },
+        "taxTotal": { "type": "number" },
+        "grand": { "type": "number" },
+        "notes": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "uid": { "type": "string" }
+      },
+      "required": ["id", "number", "date", "uid"]
+    },
+    "Customer": {
+      "title": "Customer",
+      "description": "A customer record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "contact": { "type": "string" },
+        "gstin": { "type": "string" },
+        "pan": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "phone2": { "type": "string" },
+        "website": { "type": "string" },
+        "industry": { "type": "string" },
+        "type": { "type": "string", "enum": ["B2B", "B2C", "Government", "Individual"] },
+        "billingAddr": { "type": "object" },
+        "shippingAddr": { "type": "object" },
+        "creditLimit": { "type": "number" },
+        "paymentTerms": { "type": "string" },
+        "bankAccount": { "type": "string" },
+        "ifsc": { "type": "string" },
+        "notes": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "uid": { "type": "string" }
+      },
+      "required": ["id", "name", "uid"]
+    },
+    "Item": {
+      "title": "Item",
+      "description": "A product or service item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "category": { "type": "string" },
+        "desc": { "type": "string" },
+        "hsn": { "type": "string" },
+        "unit": { "type": "string" },
+        "rate": { "type": "number" },
+        "tax": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "uid": { "type": "string" }
+      },
+      "required": ["id", "name", "uid"]
+    },
+    "Quotation": {
+      "title": "Quotation",
+      "description": "A quotation record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "number": { "type": "string" },
+        "date": { "type": "string", "format": "date-time" },
+        "validUntil": { "type": "string", "format": "date-time" },
+        "status": { "type": "string", "enum": ["draft", "sent", "accepted", "declined", "converted"] },
+        "taxType": { "type": "string", "enum": ["gst", "igst"] },
+        "supplierName": { "type": "string" },
+        "supplierGstin": { "type": "string" },
+        "supplierAddr": { "type": "string" },
+        "supplierPhone": { "type": "string" },
+        "supplierEmail": { "type": "string" },
+        "customerName": { "type": "string" },
+        "customerGstin": { "type": "string" },
+        "customerEmail": { "type": "string" },
+        "customerPhone": { "type": "string" },
+        "billingAddr": { "type": "object" },
+        "shippingAddr": { "type": "object" },
+        "items": { "type": "array" },
+        "subtotal": { "type": "number" },
+        "discTotal": { "type": "number" },
+        "taxTotal": { "type": "number" },
+        "grand": { "type": "number" },
+        "notes": { "type": "string" },
+        "terms": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "uid": { "type": "string" }
+      },
+      "required": ["id", "number", "date", "uid"]
+    },
+    "Company": {
+      "title": "Company",
+      "description": "Business profile settings",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "gstin": { "type": "string" },
+        "pan": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "website": { "type": "string" },
+        "address": { "type": "string" },
+        "city": { "type": "string" },
+        "state": { "type": "string" },
+        "pin": { "type": "string" },
+        "prefix": { "type": "string" },
+        "taxtype": { "type": "string", "enum": ["gst", "igst"] },
+        "terms": { "type": "string" },
+        "uid": { "type": "string" }
+      },
+      "required": ["name", "uid"]
+    }
+  },
+  "firestore": {
+    "/invoices/{invoiceId}": {
+      "schema": "Invoice",
+      "description": "Tax invoices"
+    },
+    "/proforma_invoices/{piId}": {
+      "schema": "ProformaInvoice",
+      "description": "Proforma invoices"
+    },
+    "/customers/{customerId}": {
+      "schema": "Customer",
+      "description": "Customer directory"
+    },
+    "/items/{itemId}": {
+      "schema": "Item",
+      "description": "Product/Service catalog"
+    },
+    "/quotations/{quotationId}": {
+      "schema": "Quotation",
+      "description": "Quotations"
+    },
+    "/company/{userId}": {
+      "schema": "Company",
+      "description": "User business profile"
+    }
+  }
+}
